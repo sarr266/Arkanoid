@@ -24,7 +24,7 @@ bool Ball::isWallCollision(RectF& wall)
 	const RectF rect = GetRect();
 	if (rect.left < wall.left)
 	{
-		pos.x += (wall.left - rect.left);
+		pos.x = 7;
 		ReboundX();
 		isCollided = true;
 	}
@@ -36,7 +36,7 @@ bool Ball::isWallCollision(RectF& wall)
 	}
 	if (rect.top < wall.top)
 	{
-		pos.y += (wall.top - rect.top);
+		pos.y = 7;
 		ReboundY();
 		isCollided = true;
 	}
