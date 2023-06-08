@@ -27,7 +27,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	ball(Vec2(300.0f, 300.0f), Vec2(100.0f, 100.0f)),
 	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
-	brick(RectF(500.0f, 313.0f, 200.0f, 100.0f), Colors::Cyan)
+	brick(RectF(100.0f, 100.0f, 100.0f, 100.0f), Colors::Cyan)
 {
 }
 

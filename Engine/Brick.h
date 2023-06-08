@@ -7,6 +7,7 @@
 
 class Brick
 {
+public:
 	Brick(RectF& rect_in, Color c_in);
 	void DrawBrick(Graphics& gfx) const;
 	bool DoBallCollision(Ball& ball);
