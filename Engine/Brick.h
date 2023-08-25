@@ -8,11 +8,11 @@
 class Brick
 {
 public:
-	Brick(RectF& rect_in, Color c_in);
+	Brick(const RectF& rect_in, Color c_in);
 	void DrawBrick(Graphics& gfx) const;
 	bool DoBallCollision(Ball& ball);
 public:
-	RectF& rect;
+	RectF rect;
 	Color c;
 	bool isDestroyed = false;
 };
