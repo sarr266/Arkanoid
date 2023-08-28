@@ -9,7 +9,7 @@ public:
 	RectF(const Vec2& topLeft, const Vec2& bottomRight);
 	RectF(const Vec2& topLeft, float width, float height);
 	static RectF FromCentre(const Vec2& centre, float halfWidth, float halfHeight); //gets the rectangular outline of the ball
-	bool isOverlappingWith(const RectF& other);
+	bool isOverlappingWith(const RectF& other) const;
 public:
 	int left;
 	int right;
