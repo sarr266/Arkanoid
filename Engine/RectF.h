@@ -5,7 +5,7 @@ class RectF
 {
 public:
 	RectF() = default;
-	RectF(int left_in, int right_in, int top_in, int bottom_in);
+	RectF(float left_in, float right_in, float top_in, float bottom_in);
 	RectF(const Vec2& topLeft, const Vec2& bottomRight);
 	RectF(const Vec2& topLeft, float width, float height);
 	static RectF FromCentre(const Vec2& centre, float halfWidth, float halfHeight); //gets the rectangular outline of the ball
