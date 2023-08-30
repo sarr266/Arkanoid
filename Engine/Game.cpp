@@ -29,7 +29,7 @@ Game::Game( MainWindow& wnd )
 	walls(0.0f, float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
 	paddle(Vec2(300.0f, 400.0f), 50.0f, 10.0f)
 {
-	const Vec2 topLeft(0.0f, 0.0f);
+	const Vec2 topLeft(40.0f, 40.0f);
 
 	int i = 0;
 
