@@ -18,7 +18,7 @@ void Ball::Update(float dt)
 	pos += vel * dt;
 }
 
-bool Ball::doWallCollision(RectF& wall)
+bool Ball::doWallCollision(const RectF& wall)
 {
 	bool isCollided = false;
 	const RectF rect = GetRect();
@@ -67,4 +67,9 @@ RectF Ball::GetRect()
 Vec2 Ball::GetVelocity() const
 {
 	return vel;
+}
+
+Vec2 Ball::GetPosition() const
+{
+	return pos;
 }
