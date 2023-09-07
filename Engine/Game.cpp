@@ -64,18 +64,18 @@ void Game::UpdateModel()
 	int curColIndex;
 	for (int i = 0; i < nBricks; i++)
 	{
-		if (bricks[i].CheckBallCollision(ball))
+		if (bricks[i].CheckBallCollision(ball)) 
 		{
 			const float newColDistSq = (ball.GetPosition() - bricks[i].GetCentre()).GetLengthSq();
-			if (collisionHappened)
+			if (collisionHappened) //assuming that a col has already taken place
 			{
-				if (newColDistSq < curColDistSq)
+				if (newColDistSq < curColDistSq) //if the new dist is less than the prev saved one
 				{
-					curColDistSq = newColDistSq;
+					curColDistSq = newColDistSq; //the smallest dist we save = new one that's < prev one
 					curColIndex = i;
 				}
 			}
-			else
+			else //this means a collision hasn't yet occurred
 			{
 				curColDistSq = newColDistSq;
 				curColIndex = i;
