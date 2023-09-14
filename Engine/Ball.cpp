@@ -1,11 +1,11 @@
 #include "Ball.h"
 #include "SpriteCodex.h"
 
-Ball::Ball(Vec2& pos_in, Vec2& vel_in)
+Ball::Ball(const Vec2& pos_in, const Vec2& dir_in)
 	:
-	pos(pos_in),
-	vel(vel_in)
+	pos(pos_in)
 {
+	SetDirection(dir_in);
 }
 
 void Ball::DrawBall(Graphics& gfx)
@@ -18,33 +18,33 @@ void Ball::Update(float dt)
 	pos += vel * dt;
 }
 
-bool Ball::doWallCollision(const RectF& wall)
+int Ball::doWallCollision(const RectF& wall)
 {
-	bool isCollided = false;
+	bool isCollided = 0; // 0 if no collision, 2 if collision with bottom, 1 if collision elsewhere
 	const RectF rect = GetRect();
 	if (rect.left <= wall.left)
 	{
 		pos.x += (wall.left - rect.left);
 		ReboundX();
-		isCollided = true;
+		isCollided = 1;
 	}
 	else if (rect.right > wall.right)
 	{
 		pos.x -= rect.right - wall.right;
 		ReboundX();
-		isCollided = true;
+		isCollided = 1;
 	}
 	if (rect.top <= wall.top)
 	{
 		pos.y += (wall.top - rect.top);
 		ReboundY();
-		isCollided = true;
+		isCollided = 1;
 	}
 	else if (rect.bottom > wall.bottom)
 	{
 		pos.y -= (rect.bottom - wall.bottom);
 		ReboundY();
-		isCollided = true;
+		isCollided = 2;
 	}
 	return isCollided;
 }
@@ -72,4 +72,9 @@ Vec2 Ball::GetVelocity() const
 Vec2 Ball::GetPosition() const
 {
 	return pos;
+}
+
+void Ball::SetDirection(const Vec2& dir)
+{
+	vel = dir.GetNormalized() * speed;
 }
