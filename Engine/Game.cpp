@@ -99,12 +99,12 @@ void Game::UpdateModel(float dt)
 
 		paddle.DoBallCollision(ball);
 
-		const int ballWallColRes = ball.doWallCollision(walls);
-		if (ballWallColRes == 1)
+		const Ball::WallCollisionResult ballWallColRes = ball.doWallCollision(walls);
+		if (ballWallColRes == Ball::WallCollisionResult::SideTop)
 		{
 			paddle.ResetCoolDown();
 		}
-		else if (ballWallColRes == 2)
+		else if (ballWallColRes == Ball::WallCollisionResult::Bottom)
 		{
 			isGameOver = true;
 		}

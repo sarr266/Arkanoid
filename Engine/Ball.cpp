@@ -18,33 +18,33 @@ void Ball::Update(float dt)
 	pos += vel * dt;
 }
 
-int Ball::doWallCollision(const RectF& wall)
+Ball::WallCollisionResult Ball::doWallCollision(const RectF& wall)
 {
-	bool isCollided = 0; // 0 if no collision, 2 if collision with bottom, 1 if collision elsewhere
+	WallCollisionResult isCollided = WallCollisionResult::None;
 	const RectF rect = GetRect();
 	if (rect.left <= wall.left)
 	{
 		pos.x += (wall.left - rect.left);
 		ReboundX();
-		isCollided = 1;
+		isCollided = WallCollisionResult::SideTop;
 	}
 	else if (rect.right > wall.right)
 	{
 		pos.x -= rect.right - wall.right;
 		ReboundX();
-		isCollided = 1;
+		isCollided = WallCollisionResult::SideTop;
 	}
 	if (rect.top <= wall.top)
 	{
 		pos.y += (wall.top - rect.top);
 		ReboundY();
-		isCollided = 1;
+		isCollided = WallCollisionResult::SideTop;
 	}
 	else if (rect.bottom > wall.bottom)
 	{
 		pos.y -= (rect.bottom - wall.bottom);
 		ReboundY();
-		isCollided = 2;
+		isCollided = WallCollisionResult::Bottom;
 	}
 	return isCollided;
 }

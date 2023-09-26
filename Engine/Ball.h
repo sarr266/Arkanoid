@@ -7,10 +7,17 @@
 class Ball
 {
 public:
+	enum class WallCollisionResult
+	{
+		None,
+		SideTop,
+		Bottom
+	};
+public:
 	Ball(const Vec2& pos_in, const Vec2& dir_in);
 	void DrawBall(Graphics& gfx);
 	void Update(float dt);  //in the update function ( remember that v = d/t, t = dt)
-	int doWallCollision(const RectF& wall);
+	WallCollisionResult doWallCollision(const RectF& wall);
 	void ReboundX();
 	void ReboundY();
 	RectF GetRect() const;
